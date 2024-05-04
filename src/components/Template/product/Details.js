@@ -1,4 +1,4 @@
-import { FaFacebookF, FaStar, FaTwitter } from "react-icons/fa";
+import { FaFacebookF, FaStar, FaTwitter,FaRegStar } from "react-icons/fa";
 import { IoCheckmark } from "react-icons/io5";
 import { CiHeart } from "react-icons/ci";
 import { TbSwitch3 } from "react-icons/tb";
@@ -7,7 +7,7 @@ import styles from "./details.module.css";
 import Breadcrumb from "./Breadcrumb";
 
 const Details = ({product}) => {
-
+  console.log(product.score)
   return (
     <main style={{ width: "63%" }}>
       <Breadcrumb
@@ -21,11 +21,21 @@ const Details = ({product}) => {
 
       <div className={styles.rating}>
         <div>
+          {
+            new Array(product.score).fill(0).map((index,item) => (
+              <FaStar key={index} />
+            ))
+          }
+          {
+            new Array(5-product.score).fill(0).map((index,item) => (
+              <FaRegStar key={index} />
+            ))
+          }
+          {/* <FaStar />
           <FaStar />
           <FaStar />
           <FaStar />
-          <FaStar />
-          <FaStar />
+          <FaStar /> */}
         </div>
         <p>{`بر اساس ${product.comments.length} دیدگاه`}</p>
       </div>

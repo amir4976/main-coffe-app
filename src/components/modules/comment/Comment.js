@@ -1,4 +1,4 @@
-import { FaStar } from "react-icons/fa";
+import { FaStar,FaRegStar } from "react-icons/fa";
 
 import styles from "./comment.module.css";
 const Comment = ({username,body,email,score,date}) => {
@@ -13,11 +13,16 @@ const Comment = ({username,body,email,score,date}) => {
             <p>۲۸ آذر ۱۴۰۱</p>
           </div>
           <div className={styles.stars}>
-            <FaStar />
-            <FaStar />
-            <FaStar />
-            <FaStar />
-            <FaStar />
+          {
+            new Array(score).fill(0).map((index,item) => (
+              <FaStar key={index} />
+            ))
+          }
+          {
+            new Array(5-score).fill(0).map((index,item) => (
+              <FaRegStar key={index} />
+            ))
+          }
           </div>
         </div>
         <p>
