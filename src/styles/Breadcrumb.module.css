@@ -1,0 +1,10 @@
+.main_breadcrump{
+    width: 100%;
+    height: 500px;
+    color: rgb(255, 255, 255);
+    background: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+}
