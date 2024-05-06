@@ -3,7 +3,8 @@ import styles from "./comments.module.css";
 import CommentForm from "./CommentForm";
 import { comment } from "postcss";
 
-const Comments = ({comments}) => {
+const Comments = ({comments,id}) => {
+  console.log(comments,id)
   return (
     <div>
       <p>نظرات ({comments.length}) :</p>
@@ -22,7 +23,7 @@ const Comments = ({comments}) => {
           </div>
         </div>
         <div className={styles.form_bg}>
-          <CommentForm />
+          <CommentForm productID={id} />
         </div>
       </main>
     </div>

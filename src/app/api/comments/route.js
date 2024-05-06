@@ -19,7 +19,17 @@ export async function POST(req){
             score,
             productID
         }) 
-
+        let averageScore =0;
+        let length = 0;
+        const getAllCommentsScore = await commentsModel.find({},"score")
+        getAllCommentsScore.map(async (item) => {
+            averageScore += item.score
+            length++
+        })
+        
+        const FindProductAndUpdateScore = await productModle.findOneAndUpdate({_id:productID},{
+            score:Math.round(averageScore/length)
+        })
 
         const product = await productModle.findOneAndUpdate({_id:productID},{
             $push:{
@@ -27,7 +37,9 @@ export async function POST(req){
             }
         })
         
-        return Response.json({message:"comment created succses fully",Data:createComments},{status:201})
+
+        return Response.json({message:"comment created succses fully"},{status:201})
+        // return Response.json({message:"comment created succses fully",Data:createComments},{status:201})
 
     }catch (error) {
         console.log(error)

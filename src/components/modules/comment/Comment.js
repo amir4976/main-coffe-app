@@ -10,7 +10,9 @@ const Comment = ({username,body,email,score,date}) => {
         <div className={styles.main_details}>
           <div className={styles.user_info}>
             <strong>{username}</strong>
-            <p>۲۸ آذر ۱۴۰۱</p>
+            <p>
+              {new Date(date).toLocaleDateString('fa-IR')}
+            </p>
           </div>
           <div className={styles.stars}>
           {

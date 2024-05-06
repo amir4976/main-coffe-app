@@ -23,8 +23,8 @@
   font-size: 1.1rem;
   color: gray;
 }
-.rate div svg:hover,
-.rate div svg:hover ~ svg {
+.rate div svg:active,
+.rate div svg:active ~ svg {
   color: orange; /* رنگ هنگام هاور */
 }
 
