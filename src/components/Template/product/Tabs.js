@@ -47,7 +47,7 @@ const Tabs = ({product}) => {
         <li title="Shipping">
           <label htmlFor="comments" role="button">
             {" "}
-            نظرات ({product.comments.length}){" "}
+            نظرات ({product.comments.filter((comment)=>comment.isAccepted).length}){" "}
           </label>
         </li>
       </ul>
@@ -60,7 +60,7 @@ const Tabs = ({product}) => {
           <MoreInfoes product={JSON.parse(JSON.stringify(product))}  />
         </section>
         <section className={styles.tabs_content}>
-          <Comments comments = {JSON.parse(JSON.stringify(product.comments))} id={product._id} />
+          <Comments comments = {JSON.parse(JSON.stringify(product.comments))} title={product.name} id={product._id} />
         </section>
       </div>
     </div>

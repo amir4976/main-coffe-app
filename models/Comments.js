@@ -27,6 +27,10 @@ const commentSchema = new mongoose.Schema({
     product:{
         type: mongoose.Types.ObjectId,
         ref: "Product"
+    },
+    isAccepted:{
+        type: Boolean,
+        default: false
     }
 })
 

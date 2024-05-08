@@ -8,15 +8,11 @@ export const authUser = async () => {
     await ConnectToDb()
     const AccessToken = cookies.cookies().get('Token')?.value
     let user = null
-
     if(AccessToken){
       const tokenPayload = await verifyToken(AccessToken)
-      console.log(tokenPayload)
       if(tokenPayload){
         user = await userModel.findOne({email:tokenPayload.email})
       }
-      console.log(user)
-  
     }
     return user
 }

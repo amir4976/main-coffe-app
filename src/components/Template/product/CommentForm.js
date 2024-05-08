@@ -13,6 +13,7 @@ const CommentForm = ({productID}) => {
     setScore(score)
     console.log(Score)
   }
+
   const SubmitComment = async (e) => {
 
     e.preventDefault()
@@ -28,16 +29,16 @@ const CommentForm = ({productID}) => {
       ShowSwal({title:"ایمیل حداقل باید ۱۰ کاراکتر باشد",icon:"error"})
       return
     }
-    if(score < 1){
+    if(Score < 1){
       ShowSwal({title:"امتیاز باید بیشتر از ۱ باشد",icon:"error"})
       return
     }
-    console.log(score)
+    console.log(Score)
     const data = {
       username,
       email,
       body,
-      score,
+      score:Score,
       productID
     }
 

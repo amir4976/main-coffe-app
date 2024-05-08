@@ -3,23 +3,23 @@ import styles from "./comments.module.css";
 import CommentForm from "./CommentForm";
 import { comment } from "postcss";
 
-const Comments = ({comments,id}) => {
+const Comments = ({comments,id,title}) => {
   console.log(comments,id)
+  console.log(comments.filter( comment => comment.isAccepted == true ).length)
   return (
     <div>
-      <p>نظرات ({comments.length}) :</p>
+      <p>نظرات ({comments.filter( comment => comment.isAccepted  ).length }) :</p>
       <hr />
 
       <main className={styles.comments}>
         <div className={styles.user_comments}>
           <p className={styles.title}>
-            7 دیدگاه برای کپسول قهوه SETPRESSO سازگار با دستگاه نسپرسو ( GOLD )
-            ده -10- عددی
+          ({comments.filter((comment)=>comment.isAccepted).length}) دیدگاه برای {title}
           </p>
           <div>
-            {comments.map((comment) => (
-              <Comment key={comment.id} {...comment} />
-            ))} 
+            {comments.map((comment) => 
+             comment.isAccepted && <Comment key={comment.id} {...comment} />
+            )} 
           </div>
         </div>
         <div className={styles.form_bg}>
