@@ -6,8 +6,26 @@ import { FaTelegram, FaLinkedinIn, FaPinterest } from "react-icons/fa";
 import styles from "./details.module.css";
 import Breadcrumb from "./Breadcrumb";
 import { IoMdHeart } from "react-icons/io";
-const Details = ({ product, isInwishList }) => {
-  
+import wishModel from '../../../../models/WishList'
+
+
+const Details = ({ product, isInwishList ,user}) => {
+
+  const addToWishList = async () => {
+      if(user){
+
+      const wish = await wishModel.findOne({product:product._id,user:user._id})
+
+      if(wish){
+        await wishModel.deleteOne({product:product._id,user:user._id})
+        isInwishList = false
+        console.log('deleted')
+      }else{
+        await wishModel.create({product:product._id,user:user._id})
+        isInwishList = true
+  }
+}}
+
 
 
   return (

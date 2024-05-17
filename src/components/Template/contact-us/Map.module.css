@@ -1,0 +1,41 @@
+.map{
+    border-radius: 10px;
+    height: 300px;
+    width: 100%;
+    color: #0000;
+}
+
+.details{
+    margin: -73px 50px 0px 50px;
+    padding: 7px 20px 15px 7px ;
+    background-color: #fff;
+    box-shadow: 0px 0 10px 0 rgba(0, 0, 0,0.5);
+    z-index: 9999;
+    position: relative;
+    color: #0000;
+    
+}
+
+.details h3{
+    margin-top: .5rem;
+    color: #0000;
+}
+
+.details span{
+    color: gray;
+    font-size: 14px;
+}
+
+.details p{
+    margin-top: .7rem;
+    margin-bottom: 3rem;
+    color: rgb(63, 61,61);
+
+}
+
+
+.details a{
+    text-decoration: underline;
+    margin-top: .5rem;
+    font-size: 15px;
+}

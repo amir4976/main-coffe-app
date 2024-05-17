@@ -29,7 +29,7 @@ const page = async () => {
       </main>
 
       {wishes.length === 0 && (
-        <div class={styles.wishlist_empty} data-aos="fade-up">
+        <div className={styles.wishlist_empty} data-aos="fade-up">
           <FaRegHeart />
           <p>محصولی یافت نشد</p>
           <span>شما هنوز هیچ محصولی در لیست علاقه مندی های خود ندارید.</span>
