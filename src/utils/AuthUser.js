@@ -1,5 +1,5 @@
 import ConnectToDb from '../../configs/db';
-import userModel from '../../models/User'
+import userModel from '../models/User'
 import { verifyToken } from './auth';
 const cookies = require('next/headers')
 

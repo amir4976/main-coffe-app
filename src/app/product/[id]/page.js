@@ -6,9 +6,9 @@ import MoreProducts from "@/components/Template/product/MoreProducts";
 import Footer from "@/components/modules/footer/Footer";
 import Navbar from "@/components/modules/navbar/Navbar";
 import { authUser } from "@/utils/AuthUser";
-import Product from "../../../../models/Product";
+import Product from "../../../models/Product";
 import ConnectToDb from "../../../../configs/db";
-import wishListModel from '../../../../models/WishList'
+import wishListModel from '../../../models/WishList'
 
 const product = async ({params}) => {
   //find if user is logged or not

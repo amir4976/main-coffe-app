@@ -1,5 +1,5 @@
 import ConnectToDb from "../../../../../configs/db";
-import productModel from "../../../../../models/Product";
+import productModel from "../../../../models/Product";
 
 // get one product
 export async function GET(req,{params}) {

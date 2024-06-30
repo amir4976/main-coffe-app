@@ -1,6 +1,6 @@
  import ConnectToDb from "../../../../../configs/db";
  import { NextResponse } from "next/server";
-import userModel from "../../../../../models/User";
+import userModel from "../../../../models/User";
 import { hashPassword , genrateToken } from "@/utils/auth";
 import { roles } from "@/utils/constants";
 

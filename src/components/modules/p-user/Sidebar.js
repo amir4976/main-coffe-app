@@ -5,27 +5,41 @@ import { ImReply } from "react-icons/im";
 import { FaComments, FaHeart, FaShoppingBag, FaUsers } from "react-icons/fa";
 import { MdOutlineAttachMoney } from "react-icons/md";
 import { MdSms, MdLogout } from "react-icons/md";
-import { usePathname } from "next/navigation";
+import { usePathname,useRouter } from "next/navigation";
 import { TbListDetails } from "react-icons/tb";
 import Link from "next/link";
+import { ShowSwal } from "@/utils/Helpers";
 import swal from "sweetalert";
 
-const Sidebar = () => {
+const Sidebar = ({user}) => {
   const path = usePathname();
+  const router = useRouter();
 
-  const logoutHandler = () => {
+  const logoutHandler = async () => {
     swal({
       title: "آیا از خروج اطمینان دارید؟",
       icon: "warning",
       buttons: ["نه", "آره"],
-    }).then((result) => {
-      //code
+    }).then(async (result) => {
+      if(result){
+        const DeleteFromWishList = await fetch("/api/auth/logout", {
+          method: "POST",
+        });
+        if (DeleteFromWishList.status === 200) {
+          ShowSwal({
+            icon: "success",
+            title: "خروج شدید",
+            text: "با تشکر",
+          });
+          router.push('/')
+        }
+      }
     });
   };
   return (
     <aside className={styles.sidebar}>
       <div className={styles.sidebar_header}>
-        <p>خوش اومدی شاهین عزیز</p>
+        <p>خوش اومدی {user.name}</p>
       </div>
       <ul className={styles.sidebar_main}>
         {path.includes("/p-user") ? (
@@ -38,7 +52,7 @@ const Sidebar = () => {
               <FaShoppingBag />
               سفارش ها
             </Link>
-            <Link href={"/p-user/tickets"}>
+            <Link href={"/p-user/tickets/sendTicket"}>
               <MdSms />
               تیکت های پشتیبانی
             </Link>

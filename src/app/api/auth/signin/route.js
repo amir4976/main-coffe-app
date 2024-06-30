@@ -7,7 +7,7 @@ import {
   validatePhone
 } from "@/utils/auth";
 import { NextResponse } from "next/server";
-import userModel from "../../../../../models/User";
+import userModel from "../../../../models/User";
 import ConnectToDb from "../../../../../configs/db";
 
 export async function POST(req) {

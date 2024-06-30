@@ -31,7 +31,13 @@ const commentSchema = new mongoose.Schema({
     isAccepted:{
         type: Boolean,
         default: false
+    },
+    user:{
+        type: mongoose.Types.ObjectId,
+        ref: "User"
     }
 })
 
-export default mongoose.models.Comment || mongoose.model("Comment", commentSchema)
+const modle =  mongoose.models.Comment || mongoose.model("Comment", commentSchema);
+
+export default modle;

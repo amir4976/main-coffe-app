@@ -7,7 +7,7 @@ import { authUser } from "@/utils/AuthUser";
 import Link from "next/link";
 import { FaRegHeart } from "react-icons/fa";
 import ConnectToDb from "../../../configs/db";
-import wishModel from "../../../models/WishList";
+import wishModel from "../../models/WishList";
 const page = async () => {
   ConnectToDb();
   const user = await authUser();

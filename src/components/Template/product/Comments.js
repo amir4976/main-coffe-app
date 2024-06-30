@@ -4,7 +4,7 @@ import CommentForm from "./CommentForm";
 import { comment } from "postcss";
 
 const Comments = ({comments,id,title}) => {
-  console.log(comments,id)
+ 
   console.log(comments.filter( comment => comment.isAccepted == true ).length)
   return (
     <div>

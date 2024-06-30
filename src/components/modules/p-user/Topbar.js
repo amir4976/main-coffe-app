@@ -4,7 +4,7 @@ import { useState } from "react";
 import styles from "./topbar.module.css";
 import { IoIosSearch, IoIosNotifications } from "react-icons/io";
 import Modal from "./Modal";
-const Topbar = () => {
+const Topbar = ({user}) => {
   const [showNotifications, setShowNotifications] = useState(false);
   const [showModal, setShowModal] = useState(false);
 
@@ -14,8 +14,8 @@ const Topbar = () => {
       <div className={styles.topbar}>
         <div className={styles.profile}>
           <div>
-            <p>شاهین مشکل گشا</p>
-            <span>ادمین</span>
+            <p>{user.name}</p>
+            <span>{user.role =="ADMIN"? 'ادمین':"یوزر"}</span>
           </div>
           <img src="/images/shahin.jpg" alt="" />
         </div>

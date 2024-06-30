@@ -5,9 +5,9 @@ import Link from "next/link";
 import { IoIosArrowDown } from "react-icons/io";
 import { FaShoppingCart, FaRegHeart } from "react-icons/fa";
 
-function Navbar({ isLogin }) {
-  const [isNavFixed, setIsNavFixed] = React.useState(false);
-console.log(isLogin)
+function Navbar({ isLogin,userRole }) {
+    const [isNavFixed, setIsNavFixed] = React.useState(false);
+  console.log(userRole)
   useEffect(() => {
     const fixNavbarToTop = () => {
       if (window.scrollY > 100) {
@@ -55,7 +55,7 @@ console.log(isLogin)
             </li>
           ) : (
             <div className={styles.dropdown}>
-              <Link href="/p-user">
+              <Link href={userRole =='ADMIN' ? "/p-admin" : "/p-user"}>
                 <IoIosArrowDown className={styles.dropdown_icons} />
                 حساب کاربری
               </Link>

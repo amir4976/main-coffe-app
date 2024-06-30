@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import ConnectToDb from "../../../../configs/db";
-import productModel from "../../../../models/Product";
+import productModel from "../../../models/Product";
 
 export async function POST(req){
     try {

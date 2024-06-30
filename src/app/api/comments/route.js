@@ -1,6 +1,6 @@
-import commentsModel from "../../../../models/comments";
+import commentsModel from "../../../models/comments";
 import ConnectToDb from "../../../../configs/db";
-import productModle from "../../../../models/Product";
+import productModle from "../../../models/Product";
 export async function POST(req){
     try {
         ConnectToDb();
@@ -20,6 +20,8 @@ export async function POST(req){
             productID,
             isAccepted:false
         }) 
+
+        // every comment adds we reset the avarage score
         let averageScore =0;
         let length = 0;
         const getAllCommentsScore = await commentsModel.find({},"score")
@@ -55,6 +57,7 @@ export async function POST(req){
 
 
 export async function GET(){
-    const comments =await commentsModel.find({},"-__v")
+    ConnectToDb();
+    const comments =await commentsModel.find({},"-__v").populate("product")
     return Response.json({comments},{status:200})
 }

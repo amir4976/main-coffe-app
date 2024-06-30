@@ -1,5 +1,5 @@
 import ConnectToDb from "../../../../configs/db";
-import contactModel from '../../../../models/Contact';
+import contactModel from '../../../models/Contact';
 export async function POST(req) {
   try {
     ConnectToDb();

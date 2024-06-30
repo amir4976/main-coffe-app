@@ -1,7 +1,7 @@
 
 import ConnectToDb from "../../../../configs/db";
-import wishList from "../../../../models/WishList";
-import userModel from "../../../../models/User";
+import wishList from "../../../models/WishList";
+import userModel from "../../../models/User";
 import { NextResponse } from "next/server";
 export async function POST(req, res) {
    try {
