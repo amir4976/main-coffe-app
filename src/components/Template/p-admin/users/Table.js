@@ -4,14 +4,14 @@ import styles from "./table.module.css";
 export default function DataTable({ users, title }) {
   const [usersList,setUsersList] = useState(users)
  
-  
+
   const ChangeRole = async (userID) => {
     const finduser = usersList.find((user) => user._id === userID);
     console.log(finduser.role)
     const updateUser =await fetch(`/api/user`,{
       method : 'POST',
       headers : {
-        'Content-Type' : 'application/json'
+        'Content-Type' : 'application/json' 
       },
       body : JSON.stringify({
         id:finduser._id,
