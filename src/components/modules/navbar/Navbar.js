@@ -7,7 +7,7 @@ import { FaShoppingCart, FaRegHeart } from "react-icons/fa";
 
 function Navbar({ isLogin,userRole }) {
     const [isNavFixed, setIsNavFixed] = React.useState(false);
-  console.log(userRole)
+
   useEffect(() => {
     const fixNavbarToTop = () => {
       if (window.scrollY > 100) {

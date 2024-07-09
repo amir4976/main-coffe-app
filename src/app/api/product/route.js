@@ -4,12 +4,12 @@ import productModel from "../../../models/Product";
 
 export async function POST(req){
     try {
-        ConnectToDb();
+    ConnectToDb();
     const {
         name,
         price,
         shortDescription,
-        longDesciption,
+        longDescription,
         weight,
         suitableFor,
         smell,
@@ -21,11 +21,12 @@ export async function POST(req){
         return Response.json({message:'product already exist'},{status:400})
     }
 
+
     const product = await productModel.create({
         name,
         price,
         shortDescription,
-        longDesciption,
+        longDescription,
         weight,
         suitableFor,
         smell,

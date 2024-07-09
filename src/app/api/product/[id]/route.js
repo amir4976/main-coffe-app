@@ -47,7 +47,7 @@ export async function DELETE(req,{params}){
         const DeletedProduct = await productModel.findOneAndDelete({_id:params.id})
         return Response.json({message:"product deleted succses fully"},{status:200})
     } catch (error) {
-        
+            
     }
 }
 

@@ -10,10 +10,11 @@ import ProductModel from "../models/Product";
 export default async function Home() {
   const user = await authUser();
   const LastProducts = await ProductModel.find({}).limit(4);
+  console.log(user)
   
   return (
     <>
-      <Navbar  isLogin={user? true : false} userRole={user.role}  />
+      <Navbar  isLogin={user? true : false} userRole={user?.role}  />
       <Banner />
       <Latest LastProducts={LastProducts} />
       <Pormote/>

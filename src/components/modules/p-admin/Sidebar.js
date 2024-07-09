@@ -11,7 +11,7 @@ import swal from "sweetalert";
 import { ShowSwal } from "@/utils/Helpers";
 import { useRouter } from "next/navigation";
 
-const Sidebar = () => {
+const Sidebar = ({AdminName}) => {
   const path = usePathname();
   const router = useRouter();
   
@@ -40,7 +40,7 @@ const Sidebar = () => {
   return (
     <aside className={styles.sidebar}>
       <div className={styles.sidebar_header}>
-        <p>خوش اومدی شاهین عزیز</p>
+        <p>{AdminName} خوش امدید</p>
       </div>
       <ul className={styles.sidebar_main}>
         {path.includes("/p-user") ? (

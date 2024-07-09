@@ -1,25 +1,39 @@
 import ConnectToDb from "../../../../configs/db";
 import userModel from "../../../models/User";
+
+export async function GET() {
+    ConnectToDb();
+    try {
+        const finduser = await userModel.find();
+        return Response.json(finduser)
+    }catch (error) {
+        return Response.json('error',{status : 500})
+    }   
+};
+
+
+
 export async function POST(req) {
     ConnectToDb();
     try {
         const body = await req.json();
 
-        const { name, email, phone } = body;
-
-        const findUser = await userModel.findOne({ email });
+        const {id, name, email, phone,role } = body;
+        console.log(id, name, email, phone,role)
 
       
         await userModel.findOneAndUpdate(
-          { _id: findUser._id },
+          { _id: id },
           {
             $set: {
               name,
               email,
               phone,
+              role,
             },
           }
         );
+
         return new Response(JSON.stringify({ message: "success" }), {
           status: 200,
         });

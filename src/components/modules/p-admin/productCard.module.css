@@ -1,0 +1,41 @@
+.productCard{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid red;
+    height: fit-content;
+    margin-top: 10px;
+    border-radius: 10px;
+}
+ .imageCard{
+    width: 100px;
+    height: 100px;
+    position: relative;
+} 
+.rightside{
+    display: flex;
+    align-items: center;
+}
+
+.Product_info{
+      display: flex;
+    flex-direction: column;
+    margin-right: 10px;
+
+}
+.Product_info span{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.btns{
+    display: flex;
+    gap:10px;
+    align-items: center;
+    padding: 0px 10px;
+}
+.btns button{
+    padding: 10px;
+    border-radius: 10px;
+    background: #711D1C;
+}

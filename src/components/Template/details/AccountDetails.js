@@ -5,8 +5,10 @@ import swal from "sweetalert";
 import { IoCloudUploadOutline } from "react-icons/io5";
 import { MdOutlineDelete } from "react-icons/md";
 import { useState } from "react";
+import { set } from "mongoose";
 
 function AccountDetails() {
+  const [userID,setUserID] = useState('')
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -15,6 +17,7 @@ function AccountDetails() {
     const getUser = async () => {
       const res = await fetch("/api/auth/me");
       const data = await res.json();
+      setUserID(data.User._id);
       setName(data.User.name);
       setEmail(data.User.email);
       setPhone(data.User.phone);
@@ -26,9 +29,11 @@ function AccountDetails() {
     // Validation (You)
 
     const userNewInfos = {
+      id: userID,
       name,
       email,
       phone,
+      role: "USER",
     };
 
     const res = await fetch("/api/user", {
