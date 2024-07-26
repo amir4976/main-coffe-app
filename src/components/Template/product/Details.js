@@ -30,7 +30,7 @@ const AddToCart = () => {
     Cart.push({
       id: product._id,
       name: product.name,
-      price: product.price,
+      price: product.price, 
       image: product.image,
       count,
     });
