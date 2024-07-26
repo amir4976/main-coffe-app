@@ -2,13 +2,14 @@ import { IoMdStar } from "react-icons/io";
 import styles from "./commentForm.module.css";
 import { useState } from "react";
 import { ShowSwal } from "@/utils/Helpers";
-const CommentForm = ({productID}) => {
+
+const CommentForm =   ({productID,user}) => {
   const [Score,setScore] =useState(5)
   const [body,setBody] = useState("")
   const [email,setEmail] = useState("")
-  const [username,setUsername] = useState("")
-  
+  const [username,setUsername] = useState("");
 
+  console.log(user)
   const setCommentScore =(score)=>{
     setScore(score)
     console.log(Score)
@@ -39,7 +40,9 @@ const CommentForm = ({productID}) => {
       email,
       body,
       score:Score,
-      productID
+      user:user._id,
+      productID:productID
+
     }
 
     const Result = await fetch("/api/comments",{

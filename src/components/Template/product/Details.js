@@ -1,3 +1,4 @@
+"use client"
 import { FaFacebookF, FaStar, FaTwitter, FaRegStar } from "react-icons/fa";
 import { IoCheckmark } from "react-icons/io5";
 import { CiHeart } from "react-icons/ci";
@@ -6,13 +7,38 @@ import { FaTelegram, FaLinkedinIn, FaPinterest } from "react-icons/fa";
 import styles from "./details.module.css";
 import Breadcrumb from "./Breadcrumb";
 import { IoMdHeart } from "react-icons/io";
-import wishModel from '../../../models/WishList'
 import AddToWishList from "./AddToWishList";
+import { useState } from "react";
 
 
 const Details = ({ product, isInwishList ,user}) => {
+const [ count ,setCount] = useState(1);
 
+// add to cart using localhost 
+const AddToCart = () => {
+  const Cart = JSON.parse(localStorage.getItem("Cart")) || [];
+  const isInCart = Cart.some((cart)=> product._id === cart.id);
+  if(isInCart){
+    Cart.forEach(item => {
+        if(item.id === product._id){
+          item.count = item.count + count;
+        }
+    });
+    localStorage.setItem("Cart", JSON.stringify(Cart));
+    alert("محصول با موفقیت به سبد خرید شما اضافه شد")
+  }else{
+    Cart.push({
+      id: product._id,
+      name: product.name,
+      price: product.price,
+      image: product.image,
+      count,
+    });
+    localStorage.setItem("Cart", JSON.stringify(Cart));
+    alert("محصول با موفقیت به سبد خرید شما اضافه شد")
+  }
 
+}
 
   return (
     <main style={{ width: "63%" }}>
@@ -27,11 +53,6 @@ const Details = ({ product, isInwishList ,user}) => {
           {new Array(5 - product.score).fill(0).map((index, item) => (
             <FaRegStar key={index} />
           ))}
-          {/* <FaStar />
-          <FaStar />
-          <FaStar />
-          <FaStar />
-          <FaStar /> */}
         </div>
         <p>{`بر اساس ${product.comments.length} دیدگاه`}</p>
       </div>
@@ -47,9 +68,11 @@ const Details = ({ product, isInwishList ,user}) => {
       </div>
 
       <div className={styles.cart}>
-        <button>افزودن به سبد خرید</button>
+        <button onClick={()=>AddToCart()}>افزودن به سبد خرید</button>
         <div>
-          <span>-</span>1<span>+</span>
+          <span onClick={()=>setCount(count<1 ? 1:1)}>-</span>
+          {count}
+          <span onClick={()=>setCount(count+1)}>+</span>
         </div>
       </div>
 

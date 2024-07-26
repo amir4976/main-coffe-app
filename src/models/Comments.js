@@ -26,7 +26,8 @@ const commentSchema = new mongoose.Schema({
     //relation to product 
     product:{
         type: mongoose.Types.ObjectId,
-        ref: "Product"
+        ref: "Product",
+        required: true
     },
     isAccepted:{
         type: Boolean,
@@ -34,7 +35,9 @@ const commentSchema = new mongoose.Schema({
     },
     user:{
         type: mongoose.Types.ObjectId,
-        ref: "User"
+        ref: "User",
+        required: true
+
     }
 })
 

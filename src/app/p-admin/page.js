@@ -5,7 +5,6 @@ import styles from "@/styles/p-admin/index.module.css";
 import Box from "@/components/modules/infoBox/InfoBox";
 
 import TicketModel from "@/models/Tickets";
-import CommentModel from "@/models/Comments";
 import UserModel from "@/models/User";
 import ProductModel from "@/models/Product";
 import connectToDB from "../../../configs/db";

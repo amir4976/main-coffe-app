@@ -5,7 +5,8 @@ import { useState } from "react";
 import Description from "./Description";
 import MoreInfoes from "./MoreInfoes";
 import Comments from "./Comments";
-const Tabs = ({product}) => {
+const Tabs = ({product,user}) => {
+  
   const [tab, setTab] = useState("description");
   console.log(product.comments)
   return (
@@ -60,7 +61,7 @@ const Tabs = ({product}) => {
           <MoreInfoes product={JSON.parse(JSON.stringify(product))}  />
         </section>
         <section className={styles.tabs_content}>
-          <Comments comments = {JSON.parse(JSON.stringify(product.comments))} title={product.name} id={product._id} />
+          <Comments comments = {JSON.parse(JSON.stringify(product.comments))} title={product.name} id={product._id} user={JSON.parse(JSON.stringify(user))} />
         </section>
       </div>
     </div>

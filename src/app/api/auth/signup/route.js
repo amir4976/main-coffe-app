@@ -16,7 +16,6 @@ export async function POST(req, res) {
 
     // get data from client
      const {name,email,phone,password} = await req.json();
-
      // validation 
      const isUserExist = await userModel.findOne({$or: [{email:email},{phone:phone},{name:name}] });
      if(isUserExist){

@@ -29,6 +29,7 @@ const product = async ({params}) => {
     isInwishList = false
   }
   
+  
   return (
     <div className={styles.container}>
       <Navbar isLogin={user ? true : false} />
@@ -37,7 +38,7 @@ const product = async ({params}) => {
           <Details product={JSON.parse(JSON.stringify(product))} isInwishList={isInwishList} user={user} />
           <Gallery /> 
         </div>
-        <Tabs product={JSON.parse(JSON.stringify(product))}/>
+        <Tabs product={JSON.parse(JSON.stringify(product))} user={JSON.parse(JSON.stringify(user))} />
         <MoreProducts relatedProducts={JSON.parse(JSON.stringify(relatedProducts))} product={JSON.parse(JSON.stringify(product))} />
       </div>
       <Footer />

@@ -43,3 +43,17 @@ export async function POST(req) {
         });
     }
 }
+
+export async function DELETE(req) {
+    ConnectToDb();
+    try {
+        const body = await req.json();
+        const { id } = body;
+        await userModel.deleteOne({ _id: id });
+        return Response.json('successfully deleted',{status : 200})
+    }catch (error) {
+        return new Response(JSON.stringify({ message: error }), {
+          status: 400,
+        });
+    }
+}

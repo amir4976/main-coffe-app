@@ -7,12 +7,12 @@ import TicketModel from "@/models/Tickets";
 
 const page = async ({ params }) => {
   const ticketID = params.id;
-  ConnectToDb()
+  ConnectToDb();
   const ticket = await TicketModel.findOne({ _id: ticketID }).populate('userID','name role');
   const answer = await TicketModel.findOne({
     mainTicket: ticketID,
   });
-console.log(ticket.title)
+console.log("tiket model ::",JSON.parse(JSON.stringify(ticket)))
 
   return (
     <Layout>
@@ -32,9 +32,9 @@ console.log(ticket.title)
             }
             {
                 answer && (
-                     <Answer type="admin" {...answer} />
+                     <Answer type="admin" ticket={JSON.parse(JSON.stringify(answer))} />
                 )
-            }
+            } 
 
 
 
