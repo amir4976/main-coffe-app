@@ -10,7 +10,6 @@ export async function POST(req){
             body,
             score,
             productID,
-            user,
         } = await req.json();
 
         const createComments = await commentsModel.create({
@@ -19,7 +18,6 @@ export async function POST(req){
             body,
             score,
             product:productID,
-            user,
             isAccepted:false
         }) 
 

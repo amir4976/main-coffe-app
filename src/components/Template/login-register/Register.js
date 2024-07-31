@@ -3,6 +3,7 @@ import styles from "./register.module.css";
 import { useState } from "react";
 import { ShowSwal } from "@/utils/Helpers";
 import { validateEmail, validatePassword,validatePhone  } from "@/utils/auth";
+import Swal from "sweetalert2";
 
 const Register = ({ showloginForm }) => {
 
@@ -64,8 +65,39 @@ const Register = ({ showloginForm }) => {
     }
   }
 
+  // const sendOTP =async()=>{
+  //   const isValidPhone = validatePhone(phone);
+  //   if(!isValidPhone){
+  //    return ShowSwal({title:"شماره تلفن خود را وارد نکردید", text:"لطفا شماره تلفن خود را وارد کنید", icon:"error"})
+  //   }
+  //   const res = await fetch('api/auth/sms/send',{
+  //     method:"POST",
+  //     headers:{
+  //       "Content-Type":"application/json"
+  //     },
+  //     body:JSON.stringify({phone}),
+  //   })
+  //   if(res.status === 201){
+  //     setIsRegesterWithOTP(true);
+  //     Swal.fire({
+  //       title:"کد ارسال شد",
+  //       text:"کد ارسال شد به شماره تلفن شما",
+  //       icon:"success",
+  //       showCancelButton:true,
+  //       confirmButtonText:"باشه",
+  //       cancelButtonText:"انصراف",
+  //     }).then((result)=>{
+  //       if(result.isConfirmed){
+  //        setIsRegesterWithOTP(true);
+  //       }
+  //     })
+      
+  //   }else{
+  //     return ShowSwal({title:"یه مشکلی پیش امد", text:"لطفا مشخصات خود را چک کنید", icon:"error"})
+  //   }
+  // }
 
-
+  
 
   return (
     <>
@@ -128,7 +160,7 @@ const Register = ({ showloginForm }) => {
           <p className={styles.redirect_to_home}>لغو</p>
         </>
       ) : (
-        <Sms hideOtpForm={hideOtpForm} />
+        <Sms hideOtpForm={hideOtpForm} phone={phone} />
       )}
     </>
   );

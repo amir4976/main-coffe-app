@@ -32,13 +32,13 @@ const commentSchema = new mongoose.Schema({
     isAccepted:{
         type: Boolean,
         default: false
-    },
-    user:{
-        type: mongoose.Types.ObjectId,
-        ref: "User",
-        required: true
-
     }
+    // user:{
+    //     type: mongoose.Types.ObjectId,
+    //     ref: "User",
+    //     required: false
+
+    // }
 })
 
 const modle =  mongoose.models.Comment || mongoose.model("Comment", commentSchema);

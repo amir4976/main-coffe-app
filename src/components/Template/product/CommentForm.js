@@ -1,6 +1,6 @@
 import { IoMdStar } from "react-icons/io";
 import styles from "./commentForm.module.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ShowSwal } from "@/utils/Helpers";
 
 const CommentForm =   ({productID,user}) => {
@@ -8,14 +8,23 @@ const CommentForm =   ({productID,user}) => {
   const [body,setBody] = useState("")
   const [email,setEmail] = useState("")
   const [username,setUsername] = useState("");
+  const [SaveChackBox,setSaveChackBox]=useState(false)
 
-  console.log(user)
   const setCommentScore =(score)=>{
     setScore(score)
     console.log(Score)
   }
+    
 
   const SubmitComment = async (e) => {
+
+    if(SaveChackBox){
+      const userData = {
+        username,
+        email
+      }
+      localStorage.setItem("userCommentInfo",JSON.stringify(userData))
+    }
 
     e.preventDefault()
     if(body.length<10){
@@ -34,13 +43,13 @@ const CommentForm =   ({productID,user}) => {
       ShowSwal({title:"امتیاز باید بیشتر از ۱ باشد",icon:"error"})
       return
     }
-    console.log(Score)
+
     const data = {
       username,
       email,
       body,
       score:Score,
-      user:user._id,
+      // user:user?._id && '',
       productID:productID
 
     }
@@ -60,6 +69,20 @@ const CommentForm =   ({productID,user}) => {
       return ShowSwal({title:"نظر شما با موفقیت ثبت شد",icon:"success"})
     }
   }
+
+
+
+
+
+  useEffect(()=>{
+    const UserData = JSON.parse(localStorage.getItem("userCommentInfo"))
+    console.log(UserData)
+    if(UserData){
+      setUsername(UserData.username)
+      setEmail(UserData.email)
+    }
+  },[])
+
   return (
     <div className={styles.form}>
       <p className={styles.title}>دیدگاه خود را بنویسید</p>
@@ -110,7 +133,7 @@ const CommentForm =   ({productID,user}) => {
         </div>
       </div>
       <div className={styles.checkbox}>
-        <input type="checkbox" name="" id="" />
+        <input type="checkbox" name="" id="" onChange={(e) => setSaveChackBox(e.target.checked)} />
         <p>
           {" "}
           ذخیره نام، ایمیل و وبسایت من در مرورگر برای زمانی که دوباره دیدگاهی
