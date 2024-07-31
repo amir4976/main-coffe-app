@@ -1,7 +1,8 @@
 import { NextResponse } from "next/server";
 import ConnectToDb from "../../../../configs/db";
 import productModel from "../../../models/Product";
-
+import path from "path";
+import { writeFile } from "fs/promises";
 export async function POST(req){
     try {
     ConnectToDb();
@@ -40,6 +41,18 @@ export async function POST(req){
     
 }
 
+export async function PUT(req) {
+    const DataForm = await req.formData();
+    const img = await DataForm.get('img')
+    
+
+    const fileBuffer =Buffer.from(await img.arrayBuffer())
+    const fileName = Date.now() + img.name
+    const fileRoute = path.join(process.cwd(),"public/upload",fileName)
+    console.log(fileBuffer)
+    await writeFile(fileRoute ,fileBuffer)
+    return NextResponse.json({message:'product updated succses fully'},{status:200})
+}
 
 
 export async function GET(req){
