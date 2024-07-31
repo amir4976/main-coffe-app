@@ -36,7 +36,7 @@ const authAdmin = async () => {
       }
     // if token is not valid then return null
     } else {
-      return null;
+      return null; 
     }
   }
   return user;
